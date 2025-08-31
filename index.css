@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Fix Google Translate box size inside header */
+#google_translate_element {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  height: 40px; /* adjust to match your header height */
+  overflow: hidden;
+}
+
+/* Make dropdown smaller */
+.goog-te-combo {
+  font-size: 14px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  height: 32px;
+  margin: 4px 0;
+}
