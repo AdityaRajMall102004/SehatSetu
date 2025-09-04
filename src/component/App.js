@@ -1,30 +1,29 @@
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
-import Error from "./components/Error";
-import Header from "./components/Header";
-import DashboardHeader from "./components/DashboardHeader";
-import Body from "./components/Body";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import PatientDashboard from "./components/PatientDashboard";
-import DoctorDashboard from "./components/DoctorDashboard";
-import AnganwadiDashboard from "./components/AnganwadiDashboard";
-import About from "./components/About";
-import Services from "./components/Services";
-import Contact from "./components/Contact";
-
-const PublicLayout = () => (
+import Error from "./maincomponent/Error";
+import Header from "./maincomponent/Header";
+import DashboardHeader from "./maincomponent/DashboardHeader";
+import Body from "./maincomponent/Body";
+import Login from "./maincomponent/Login";
+import Signup from "./maincomponent/Signup";
+import PatientDashboard from "./patientComponent/PatientDashboard";
+import DoctorDashboard from "./doctorComponent/DoctorDashboard";
+import AnganwadiDashboard from "./aganwadiComponent/AnganwadiDashboard";
+import About from "./maincomponent/About";
+import Services from "./maincomponent/Services";
+import Contact from "./maincomponent/Contact";
+import MedicalDashboard from "./medicalComponent/MedicalDashboard";
+  const PublicLayout = () => (
     <>
       <Header />
       <Outlet />
     </>
   );
-  
   const DashboardLayout = () => (
-    <>
+      <>
         <DashboardHeader />
-      <Outlet />
-    </>
+        <Outlet/>
+      </>
   );
   
 const appRouter = createBrowserRouter([
@@ -35,8 +34,8 @@ const appRouter = createBrowserRouter([
       { path: "/login/:role", element: <Login /> },
       { path: "/signup/:role", element: <Signup /> },
       { path: "/about", element: <About /> },
-        { path: "/services", element: <Services /> },
-        { path: "/contact", element: <Contact /> },
+      { path: "/services", element: <Services /> },
+      { path: "/contact", element: <Contact /> },
 
     ],
   },
@@ -46,6 +45,7 @@ const appRouter = createBrowserRouter([
       { path: "/PatientDashboard", element: <PatientDashboard /> },
       { path: "/DoctorDashboard", element: <DoctorDashboard /> },
       { path: "/AnganwadiDashboard", element: <AnganwadiDashboard /> },
+      { path: "/MedicalDashboard", element: <MedicalDashboard /> },
     ],
   },
   { path: "*", element: <Error /> },

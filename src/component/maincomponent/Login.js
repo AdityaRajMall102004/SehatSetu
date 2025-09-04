@@ -15,6 +15,7 @@ export default function Login() {
     Patient: { email: "patient@gmail.com", password: "patient123" },
     Doctor: { email: "doctor@gmail.com", password: "doctor123" },
     Anganwadi: { email: "anganwadi@gmail.com", password: "anganwadi123" },
+    Medical: { email: "medical@gmail.com", password: "medical123" },
   };
 
   const handleLogin = (e) => {

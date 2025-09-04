@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Stethoscope, User, Home } from "lucide-react"; // icons
+import { Stethoscope, User, Home, Pill } from "lucide-react"; // Added Pill icon for Medical
 
 export default function Body() {
   const navigate = useNavigate();
@@ -18,8 +18,10 @@ export default function Body() {
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           A healthcare platform connecting{" "}
           <span className="font-semibold text-green-600">Patients</span>,{" "}
-          <span className="font-semibold text-blue-600">Doctors</span>, and{" "}
-          <span className="font-semibold text-purple-600">Anganwadi Workers</span>{" "}
+          <span className="font-semibold text-blue-600">Doctors</span>,{" "}
+          <span className="font-semibold text-purple-600">Anganwadi Workers</span> 
+          and{" "}
+          <span className="font-semibold text-red-600">Medical Stores</span>{" "}
           to improve medical access in Nabha & nearby villages.
           <br />
           <span className="text-sm text-gray-500">
@@ -29,7 +31,7 @@ export default function Body() {
       </div>
 
       {/* Cards Section */}
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {/* Patient Card */}
         <div className="bg-white shadow-lg rounded-2xl p-8 text-center hover:shadow-2xl transition">
           <User className="mx-auto text-blue-600 w-14 h-14 mb-4" />
@@ -89,6 +91,29 @@ export default function Body() {
             <button
               onClick={() => handleNavigate("anganwadi", "signup")}
               className="border border-purple-600 text-purple-600 px-5 py-2 rounded-lg hover:bg-purple-50"
+            >
+              Signup
+            </button>
+          </div>
+        </div>
+
+        {/* Medical Card */}
+        <div className="bg-white shadow-lg rounded-2xl p-8 text-center hover:shadow-2xl transition">
+          <Pill className="mx-auto text-red-600 w-14 h-14 mb-4" />
+          <h3 className="text-2xl font-semibold text-red-700">Medical</h3>
+          <p className="text-gray-600 mb-6">
+            मेडिकल Stores can manage medicines, provide prescriptions & serve patients quickly.
+          </p>
+          <div className="space-x-4">
+            <button
+              onClick={() => handleNavigate("medical", "login")}
+              className="bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => handleNavigate("medical", "signup")}
+              className="border border-red-600 text-red-600 px-5 py-2 rounded-lg hover:bg-red-50"
             >
               Signup
             </button>
