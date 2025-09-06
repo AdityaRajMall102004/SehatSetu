@@ -13,19 +13,42 @@ import About from "./maincomponent/About";
 import Services from "./maincomponent/Services";
 import Contact from "./maincomponent/Contact";
 import MedicalDashboard from "./medicalComponent/MedicalDashboard";
+import PatientProfile from "./patientComponent/PatientProfile";
+import HealthRecords from "./patientComponent/HealthRecord";
+import BookAppointment from "./patientComponent/BookAppointment";
+import VideoCall from "./patientComponent/VideoCall";
   const PublicLayout = () => (
     <>
       <Header />
       <Outlet />
     </>
   );
-  const DashboardLayout = () => (
+  const MedicalLayout = () => (
       <>
         <DashboardHeader />
         <Outlet/>
       </>
   );
-  
+ const PatientLayout = () => (
+  <>
+    <DashboardHeader />
+    <Outlet />
+  </>
+);
+
+const DoctorLayout = () => (
+  <>
+    <DashboardHeader />
+    <Outlet />
+  </>
+);
+
+const AnganwadiLayout = () => (
+  <>
+    <DashboardHeader />
+    <Outlet />
+  </>
+);
 const appRouter = createBrowserRouter([
   {
     element: <PublicLayout />,
@@ -36,16 +59,34 @@ const appRouter = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/services", element: <Services /> },
       { path: "/contact", element: <Contact /> },
-
     ],
   },
   {
-    element: <DashboardLayout />,
+    element: <MedicalLayout />,
+    children: [
+      { path: "/MedicalDashboard", element: <MedicalDashboard /> },
+    ],
+  },
+  {
+    element: <PatientLayout />,
     children: [
       { path: "/PatientDashboard", element: <PatientDashboard /> },
+      { path: "/profile", element: <PatientProfile /> },
+      { path: "/health-records", element: <HealthRecords /> },
+      { path:"/book-appointment" ,element:<BookAppointment />},
+      { path:"/VideoCall" ,element:<VideoCall />},
+    ],
+  },
+  {
+    element: <DoctorLayout />,
+    children: [
       { path: "/DoctorDashboard", element: <DoctorDashboard /> },
+    ],
+  },
+  {
+    element: <AnganwadiLayout />,
+    children: [
       { path: "/AnganwadiDashboard", element: <AnganwadiDashboard /> },
-      { path: "/MedicalDashboard", element: <MedicalDashboard /> },
     ],
   },
   { path: "*", element: <Error /> },

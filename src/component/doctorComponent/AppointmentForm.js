@@ -32,9 +32,6 @@ export default function AppointmentForm({ onClose, onSubmit }) {
             onChange={(e) => setPatient(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg"
           />
-          
-            
-
           <input
             type="text"
             placeholder="Time (e.g. 2:30 PM)"

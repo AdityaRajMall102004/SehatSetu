@@ -7,6 +7,4 @@ node_modules/
 # Build output
 dist/
 build/
-
-# Environment files
 .env

@@ -1,5 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Stethoscope, User, Home, Pill } from "lucide-react"; // Added Pill icon for Medical
+import { Stethoscope, User, Home, Pill, ActivitySquare } from "lucide-react";
+
+// For the background image, find a subtle, abstract tech or medical background.
+// Good sources are Unsplash, Pexels, or SVG background generators.
+// Example search terms: "plexus background", "network nodes", "abstract technology".
+// I'm using a placeholder URL here. Replace it with your chosen image.
+const backgroundImageUrl = "https://images.unsplash.com/photo-1554469384-e58fac166873?q=80&w=2670&auto=format&fit=crop"; 
 
 export default function Body() {
   const navigate = useNavigate();
@@ -8,122 +14,109 @@ export default function Body() {
     navigate(`/${type}/${role}`);
   };
 
+  const cardData = [
+    {
+      role: "patient",
+      title: "For Patients",
+      description: "Book appointments, view medical records, and connect with your doctor from anywhere.",
+      icon: User,
+      accentColor: "cyan",
+    },
+    {
+      role: "doctor",
+      title: "For Doctors",
+      description: "Manage your schedule, consult with patients, and issue digital prescriptions seamlessly.",
+      icon: Stethoscope,
+      accentColor: "emerald",
+    },
+    {
+      role: "anganwadi", // Role name kept for navigation logic
+      title: "For Anganwadi ",
+      description: "Track community health, manage maternal and child care, and access vital data.",
+      icon: Home,
+      accentColor: "violet",
+    },
+    {
+      role: "medical", // Role name kept for navigation logic
+      title: "For Pharmacies",
+      description: "Receive digital prescriptions, manage inventory, and serve your customers faster.",
+      icon: Pill,
+      accentColor: "rose",
+    },
+  ];
+
   return (
-    <main className="px-6 py-12 bg-gradient-to-b from-green-50 to-white min-h-screen">
-      {/* Heading Section */}
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-green-700 mb-4">
-          Welcome to SehatSetu Nabha
-        </h2>
-        <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-          A healthcare platform connecting{" "}
-          <span className="font-semibold text-green-600">Patients</span>,{" "}
-          <span className="font-semibold text-blue-600">Doctors</span>,{" "}
-          <span className="font-semibold text-purple-600">Anganwadi Workers</span> 
-          and{" "}
-          <span className="font-semibold text-red-600">Medical Stores</span>{" "}
-          to improve medical access in Nabha & nearby villages.
-          <br />
-          <span className="text-sm text-gray-500">
-            (स्वास्थ्य सेवाओं तक सभी की पहुँच)
-          </span>
-        </p>
-      </div>
+    <main
+      className="relative min-h-screen w-full bg-slate-900 text-gray-200 font-sans overflow-hidden"
+    >
+      {/* Background Image and Overlay */}
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      />
+      <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10" />
 
-      {/* Cards Section */}
-      <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        {/* Patient Card */}
-        <div className="bg-white shadow-lg rounded-2xl p-8 text-center hover:shadow-2xl transition">
-          <User className="mx-auto text-blue-600 w-14 h-14 mb-4" />
-          <h3 className="text-2xl font-semibold text-blue-700">Patient</h3>
-          <p className="text-gray-600 mb-6">रोगी (Patients) can book appointments and access health records.</p>
-          <div className="space-x-4">
-            <button
-              onClick={() => handleNavigate("patient", "login")}
-              className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700"
-            >
-              Login
-            </button>
-            <button
-              onClick={() => handleNavigate("patient", "signup")}
-              className="border border-blue-600 text-blue-600 px-5 py-2 rounded-lg hover:bg-blue-50"
-            >
-              Signup
-            </button>
-          </div>
-        </div>
-
-        {/* Doctor Card */}
-        <div className="bg-white shadow-lg rounded-2xl p-8 text-center hover:shadow-2xl transition">
-          <Stethoscope className="mx-auto text-green-600 w-14 h-14 mb-4" />
-          <h3 className="text-2xl font-semibold text-green-700">Doctor</h3>
-          <p className="text-gray-600 mb-6">डॉक्टर (Doctors) can manage patients, appointments, and prescriptions.</p>
-          <div className="space-x-4">
-            <button
-              onClick={() => handleNavigate("doctor", "login")}
-              className="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700"
-            >
-              Login
-            </button>
-            <button
-              onClick={() => handleNavigate("doctor", "signup")}
-              className="border border-green-600 text-green-600 px-5 py-2 rounded-lg hover:bg-green-50"
-            >
-              Signup
-            </button>
-          </div>
-        </div>
-
-        {/* Anganwadi Card */}
-        <div className="bg-white shadow-lg rounded-2xl p-8 text-center hover:shadow-2xl transition">
-          <Home className="mx-auto text-purple-600 w-14 h-14 mb-4" />
-          <h3 className="text-2xl font-semibold text-purple-700">Anganwadi</h3>
-          <p className="text-gray-600 mb-6">
-            आंगनवाड़ी Workers help monitor maternal & child health in villages.
+      {/* Content Container */}
+      <div className="relative z-20 px-4 sm:px-6 lg:px-8 py-20">
+        {/* Heading Section */}
+        <div className="text-center mb-20 max-w-4xl mx-auto">
+          <ActivitySquare className="mx-auto w-16 h-16 mb-6 text-cyan-400" strokeWidth={1.5} />
+          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-4 text-white">
+            Welcome to <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">SehatSetu</span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Empowering Health, Connecting Lives. We seamlessly link patients, doctors, health workers, and pharmacies to revolutionize healthcare access for all.
           </p>
-          <div className="space-x-4">
-            <button
-              onClick={() => handleNavigate("anganwadi", "login")}
-              className="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700"
-            >
-              Login
-            </button>
-            <button
-              onClick={() => handleNavigate("anganwadi", "signup")}
-              className="border border-purple-600 text-purple-600 px-5 py-2 rounded-lg hover:bg-purple-50"
-            >
-              Signup
-            </button>
-          </div>
         </div>
 
-        {/* Medical Card */}
-        <div className="bg-white shadow-lg rounded-2xl p-8 text-center hover:shadow-2xl transition">
-          <Pill className="mx-auto text-red-600 w-14 h-14 mb-4" />
-          <h3 className="text-2xl font-semibold text-red-700">Medical</h3>
-          <p className="text-gray-600 mb-6">
-            मेडिकल Stores can manage medicines, provide prescriptions & serve patients quickly.
-          </p>
-          <div className="space-x-4">
-            <button
-              onClick={() => handleNavigate("medical", "login")}
-              className="bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700"
+        {/* Cards Section */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          {cardData.map((card) => (
+            <div
+              key={card.role}
+              className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 flex flex-col items-center text-center 
+                         border border-white/20 shadow-2xl
+                         transform transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50 hover:shadow-cyan-500/10"
             >
-              Login
-            </button>
-            <button
-              onClick={() => handleNavigate("medical", "signup")}
-              className="border border-red-600 text-red-600 px-5 py-2 rounded-lg hover:bg-red-50"
-            >
-              Signup
-            </button>
-          </div>
-        </div>
-      </div>
+              <div className={`mb-6 p-4 rounded-full bg-gradient-to-br from-${card.accentColor}-500/20 to-slate-800/10`}>
+                <card.icon className={`w-14 h-14 text-${card.accentColor}-400`} strokeWidth={1.5} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">{card.title}</h3>
+              <p className="text-gray-400 mb-8 flex-grow">
+                {card.description}
+              </p>
+             <div className="w-full flex flex-col space-y-3">
+  {/* Login Button */}
+  <button
+    onClick={() => handleNavigate(card.role, "login")}
+    className={`w-full py-3 px-6 rounded-xl font-semibold shadow-md transition-all duration-300
+      bg-gradient-to-r from-green-500 to-emerald-600 text-white
+      hover:from-green-600 hover:to-emerald-700 hover:shadow-lg hover:shadow-green-400/40
+      transform hover:-translate-y-0.5`}
+  >
+    Login
+  </button>
 
-      {/* Footer Quote */}
-      <div className="mt-16 text-center text-gray-600 italic">
-        "स्वस्थ गांव, खुशहाल परिवार" • Healthy Villages, Happy Families
+  {/* Signup Button */}
+  <button
+    onClick={() => handleNavigate(card.role, "signup")}
+    className={`w-full py-3 px-6 rounded-xl font-semibold shadow-md transition-all duration-300
+      bg-gradient-to-r from-blue-500 to-indigo-600 text-white
+      hover:from-blue-600 hover:to-indigo-700 hover:shadow-lg hover:shadow-blue-400/40
+      transform hover:-translate-y-0.5`}
+  >
+    Signup
+  </button>
+</div>
+
+            </div>
+          ))}
+        </div>
+
+        {/* Footer Quote */}
+        <div className="mt-24 text-center text-gray-400 text-lg font-light">
+          <p>"Healthy Communities, Thriving Families"</p>
+        </div>
       </div>
     </main>
   );
